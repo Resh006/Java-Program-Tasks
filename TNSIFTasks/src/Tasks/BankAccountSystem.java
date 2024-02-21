@@ -5,12 +5,14 @@ package Tasks;
 	private String accountHolder;
 	private double balance;
 	
+	//Constructor to initialize account details
 	public BankAccount(String accountNumber,String accountHolder,double balance) {
 		this.accountNumber=accountNumber;	
 		this.accountHolder=accountHolder;
 		this.balance=balance;
 	}
 	
+	//Method to deposit an amount
 	public void deposit(double amount) {
 		if(amount>0) {
 			balance+=amount;
@@ -21,6 +23,7 @@ package Tasks;
 		}
 	}
 	
+	//Method to withdrawal an amount with error handling
     public void withdrawal(double amount) throws InsufficientBalanceException {
     	
 		if(amount>0) {
@@ -37,6 +40,7 @@ package Tasks;
 		}
 	}
 
+    //Method to display info. about Holders
     public void displayInfo() {
     	System.out.println("Account Number: "+accountNumber);
     	System.out.println("Account Holder: "+accountHolder);
@@ -44,12 +48,15 @@ package Tasks;
     }
  }
     
-    public class BankAccountSystem{
+public class BankAccountSystem{
 
 	public static void main(String[] args) {
+		
+		//Create multiple instances
 		BankAccount acc1=new BankAccount("IOB7820036","Shakthi",0);
 		BankAccount acc2=new BankAccount("IOB7820071","Kathir",0);
 		
+		//Simulate Transactions
 		acc1.deposit(10.00);
 		try {
 		  acc1.withdrawal(100.00);
@@ -70,12 +77,14 @@ package Tasks;
 			System.out.println(e.getMessage());
 		}
 		System.out.println("-----------Information------------");
+		
+		//Display info.
 		acc2.displayInfo();
 	}
-
 }
 
-  class InsufficientBalanceException extends Exception{
+//Error Handling 
+class InsufficientBalanceException extends Exception{
 	  public InsufficientBalanceException(String message) {
 		  super(message);
 	 
